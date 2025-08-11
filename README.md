@@ -11,10 +11,7 @@ fish  by GPT
 wawe effect on : https://prismic.io/blog/css-text-animations
 
 alarm : https://youtu.be/kcT-i9xzC-8?si=43KHFiyKth-sHuPV
-<<<<<<< HEAD
-=======
 
->>>>>>> 4b505ec1896eac5cb4dd9d1972dd7289ac34a13a
 <img src="https://raw.githubusercontent.com/heterhum/visual_timer/main/demo/firstimg.png" alt="first" width="300">
 <img src="https://raw.githubusercontent.com/heterhum/visual_timer/main/demo/secondimg.png" alt="second" width="300">
 
