@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="./fish_img/blue_fish.png">
+    
+</head>
+<body>
+    <div id="left">
+    </div>
+    </div>
+    <div id="right">
+        <div id="top"></div>
+        <div id="mid">
+            <p id="timerElement">00:00</p> 
+        </div>
+        <div id="bottom">
+            <div id="butonContainer">
+                <button onclick="playF()">Play</button>
+                <button onclick="pauseF()">Pause</button>
+                <button onclick="resetF()">Reset</button>
+            </div>
+            <div id="timerContainer">
+                <input type="number" id="getTime"> 
+            </div>
+        </div>
+    </div>
+    <div id="time_up">
+        <div class="wave-container">
+            <h1 class="wave-text">
+                <span>T</span><span>I</span><span>M</span><span>E</span><span>'</span><span>S</span><span>-</span><span>U</span><span>P</span>
+            </h1>
+        </div>
+    </div>
+</body>
+
+<script>
+let time =  9;
+let actime = time ;
+let pourcH= 0.1;
+let start = true
+let play=false
+let pause=true
+const divfish = document.getElementById("left");
+const timerElement=document.getElementById("timerElement");
+let end=false
+var cont = NaN
+var audio = false
+
+const fish_list = ["./fish_img/blue_fish.png","./fish_img/yellow_fish.png","./fish_img/orange_fish.png","./fish_img/green_fish.png","./fish_img/pink_fish.png"]
+
+function playF(){
+    if (start){
+        let x = document.getElementById("getTime").value;
+        if (!x){
+            alert("letter is present")
+            return
+        }   
+        time=x
+        actime=time
+        build()
+        let minutes = parseInt(actime / 60, 10);
+        let secondes = parseInt(actime % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        secondes = secondes < 10 ? "0" + secondes : secondes;
+        timerElement.innerText = `${minutes}:${secondes}`;
+        start=false
+        setTimeout(function(){
+            play=true
+            pause=false
+        }, 1000);
+    } else {
+        play=true
+        pause=false
+    }
+}
+
+function pauseF(){
+    play=false
+    pause=true
+}
+
+function resetF(){
+    play=false
+    pause=true
+    start=true
+    end=false
+    document.getElementById("time_up").style.display="none"
+    console.log(audio.currentTime)
+    if (audio != false && audio.currentTime>=0){
+        audio.pause();
+    }
+    divfish.innerHTML=""
+    timerElement.innerText = `${"00"}:${"00"}`;
+}
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 82) {
+        resetF()
+    }
+    else if(event.keyCode == 32) {
+        if(play){
+            pauseF()
+        } else {
+            playF()
+        }
+    }
+});
+
+setInterval(() => {
+    if (pause){
+    } else if (end){
+    } else{
+        if (actime > 0) {
+          actime = actime - 1;
+          x=time-actime -1
+          cont.children[x]=cont.children[x].removeChild(cont.children[x].firstChild)
+        } else {
+            clearInterval(this);
+            document.getElementById("time_up").style.display="flex"
+            end=true
+            audio = new Audio('./iphone_ring.m4a');
+            audio.play();
+        }
+        let minutes = parseInt(actime / 60, 10);
+        let secondes = parseInt(actime % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        secondes = secondes < 10 ? "0" + secondes : secondes;
+        timerElement.innerText = `${minutes}:${secondes}`;
+    }
+}, 1000);
+
+function build(){
+if (time > 0 && time <= 30) {
+    let row = 5;
+    let col = 6;
+    cont=document.createElement('div');
+    cont.className="container1"
+    divfish.appendChild(cont);
+    
+    for (let i=0; i < 30; i++) {
+        var imgfish = document.createElement('div');
+        imgfish.className="cell";
+        cont.appendChild(imgfish);
+    }
+
+    for (let i=0; i < time; i++) {
+        var ichild=cont.children[i]
+        var img=document.createElement("img");
+        let  random = Math.floor(Math.random() * fish_list.length);
+        imgsrc=fish_list[random]
+        img.src=imgsrc
+        ichild.appendChild(img)
+        
+    }
+
+} else if ( time > 30 && time <= 60) {
+    let row = 10;
+    let col = 6;
+    cont=document.createElement('div');
+    cont.className="container2"
+    divfish.appendChild(cont);
+    
+    for (let i=0; i < 60; i++) {
+        var imgfish = document.createElement('div');
+        imgfish.className="cell";
+        cont.appendChild(imgfish);
+    }
+
+    for (let i=0; i < time; i++) {
+        var ichild=cont.children[i]
+        var img=document.createElement("img");
+        let  random = Math.floor(Math.random() * fish_list.length);
+        imgsrc=fish_list[random]
+        img.src=imgsrc
+        ichild.appendChild(img)
+        
+    }
+}
+}
+</script>
+</html>

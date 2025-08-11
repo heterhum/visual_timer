@@ -1,0 +1,165 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+body {
+    display: flex;
+    background-image: url('./fish_img/background.png');
+}
+
+#right {
+    height: 100%;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#top{
+    background-color: rgba(0, 0, 0, 0);
+    height: 10%;
+}
+
+#mid{
+    background-color: rgba(0, 0, 0, 0);
+    height: 40%;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#timerElement{
+    font-size: 18vw;
+}
+
+#bottom{
+    background-color: rgba(0, 0, 0, 0);
+    height: 50%;
+    display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+
+#left {
+    position: relative;
+    height: 100%;
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#poissonC{
+    width: 100%;
+    height: 80%;
+    background-color: #ffffff00;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+	justify-content: center;
+	align-items: center;
+    
+}
+
+.container1 {
+  height: 80%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
+  grid-template-rows: repeat(6, 1fr);    /* 6 lignes */
+  /*border: 2px solid black;*/
+}
+.container2 {
+  width: 80%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 5 colonnes */
+  grid-template-rows: repeat(10, 1fr);    /* 6 lignes */
+  /*border: 2px solid black;*/
+}
+.cell {
+    /*border: 1px solid #999;*/
+    background-color: rgba(0, 0, 0, 0);
+    aspect-ratio: 16 / 9
+}
+
+.cell img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+
+#time_up{
+    background-image: url('./fish_img/background.png');
+    display:none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+
+.wave-text span {
+    display: inline-block;
+    font-size: 15vw;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.wave-text span:nth-child(1) {
+    animation-delay: 0s;
+}
+.wave-text span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.wave-text span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.wave-text span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+.wave-text span:nth-child(5) {
+    animation-delay: 0.8s;
+}
+.wave-text span:nth-child(6) {
+    animation-delay: 1s;
+}
+.wave-text span:nth-child(7) {
+    animation-delay: 1.2s;
+}
+.wave-text span:nth-child(8) {
+    animation-delay: 1.4s;
+}
+.wave-text span:nth-child(9) {
+    animation-delay: 1.6s;
+}
+
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+#audio{
+    display: none;
+}
